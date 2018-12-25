@@ -18,17 +18,9 @@ export default {
             this.$emit("switchTab",number)
             switch(number){
                 case 0:
-                  
-                  if(number ===0){
-                      return
-                  }
                   this.active = number
                   break;
                 case 1:
-                
-                  if(number ===1){
-                      return
-                  }
                   this.active = number
                   break;
             }

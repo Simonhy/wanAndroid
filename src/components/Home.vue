@@ -1,11 +1,13 @@
 <template>
     <div>
        <div class="titlebar">
-          <titlebar :number="number" ></titlebar>
+          <titlebar :number="number" @switchTab="switchTabs" ></titlebar>
        </div>
        <div class="container">
            <container :banners="banners" v-show="isShowHome"></container>
            <knowledge v-show="isShow"></knowledge>
+           <hot v-show="isHot"></hot>
+           <lefthome v-show="isLeft"></lefthome>
        </div>
        <div class="bottom" >
             <BottomTabBar @switchTab="switchTabs" ></BottomTabBar>
@@ -19,6 +21,7 @@ import BottomTabBar from './BottomTabBar'
 import container from './conatiner'
 import knowledge from "./knowledge";
 import lefthome from './login/lefthome'
+import hot  from './hot/hot'
 
 import { mapState } from 'vuex'
 export default {
@@ -26,6 +29,8 @@ export default {
         return {
           isShowHome:true,
           isShow:false,
+          isHot:false,
+          isLeft:false,
           number:0,
           isShowLeft:false
         }
@@ -34,13 +39,29 @@ export default {
        switchTabs(number){
            switch(number){
                case 0:
-                   this.isShowHome = true;
-                   this.isShow = false;
+                    this.isShowHome = true;
+                    this.isShow = false;
+                    this.isHot = false;
+                    this.isLeft = false;
                     break;
                case 1:
                     this.isShowHome = false;
-                     this.isShow = true;
+                    this.isShow = true;
+                    this.isHot = false;
+                    this.isLeft = false;
                     break
+                case 2:
+                     this.isShowHome = false;
+                     this.isShow = false;
+                      this.isLeft = false;
+                     this.isHot = true;
+                    break
+                case 3:
+                    this.isShowHome = false;
+                     this.isShow = false;
+                     this.isHot = false;
+                     this.isLeft = true;
+                     break
                     
            }
            this.number = number;
@@ -54,7 +75,8 @@ export default {
         container,
         BottomTabBar,
         knowledge,
-        lefthome
+        lefthome,
+        hot
     },
     created(){
         /* eslint-disable */

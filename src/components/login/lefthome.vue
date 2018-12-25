@@ -1,8 +1,6 @@
 <template>
     <div class="left_plan">
-        <div class="titlebar">
-            
-       </div>
+        登录页面
     </div>
 </template>
 <script>

@@ -26,7 +26,10 @@ export default {
         searchPage(){
             //跳转到搜索页面
             this.$router.push({
-               path:'/search'
+               path:'/search', 
+               query:{
+                   keyword:''
+               }
             })
         }
     }

@@ -12,13 +12,15 @@
                     v-for="item in list"
                     :key="item.id"
                 >
-                    <div class="item_title">
+                    <a :href="item.link">
+                        <div class="item_title" >
                         <span class="item_title1">
                             <van-icon name="manager-o" slot="left"/>
                             {{item.author}}</span>
                         <span class="item_title2">{{item.niceDate}}</span>
                     </div>
                     <p class="item_content">{{item.title}}</p>
+                    </a>
                     <div class="item_title">
                         <p class="item_chapter">{{item.chapterName}}</p>
                         <van-icon name="like-o" slot="right"/>  
@@ -41,6 +43,7 @@ export default {
             isLoading: false,//控制下拉刷新的加载动画
             listAll:[],
             refresh:false,
+            href:''
         };
   },
 

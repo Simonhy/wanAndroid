@@ -22,13 +22,15 @@
                     v-for="item in list"
                     :key="item.id"
                 >
-                    <div class="item_title">
+                    <a :href="item.link">
+                        <div class="item_title">
                         <span class="item_title1">
                             <van-icon name="manager-o" slot="left"/>
                             {{item.author}}</span>
                         <span class="item_title2">{{item.niceDate}}</span>
                     </div>
                     <p class="item_content">{{item.title}}</p>
+                    </a>
                     <div class="item_title">
                         <p class="item_chapter">{{item.chapterName}}</p>
                         <van-icon name="like-o" slot="right"/>  
@@ -53,7 +55,8 @@ export default {
             finished: false,//控制在页面往下移动到底部时是否调用接口获取数据
             listAll:[],
             load :false,
-            first :false
+            first :false,
+            href:''
         }
     },
     methods:{
@@ -74,16 +77,14 @@ export default {
              this.load = true
             //发送dispatch分发
               if(this.pageNumber){
-                   console.log(keyword)
                    let page = this.pageNumber
                     this.$store.dispatch('search/getSearch',{
                          page,
                          keyword
                     })
                 }else{
-                    console.log(keyword)
                     let page = 0
-                   this.$store.dispatch('search/getSearch',{
+                    this.$store.dispatch('search/getSearch',{
                       page,
                       keyword
                    })
@@ -112,6 +113,13 @@ export default {
         // console.log(this.listAll+"0000000000000000")
          return this.listAll
      },
+  },
+  created(){
+     let key =  this.$route.query.keyword
+     this.value = key
+     if(this.value !=""){
+         this.onSearch()
+     }
   }
 }
 </script>

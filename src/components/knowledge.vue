@@ -3,15 +3,17 @@
          <van-list
             :offset="600">
                 <van-cell
-                    v-for="item in list"
-                    :key="item.id">
+                    v-for="(item,p) in list"
+                    :key="p"
+                    @click.native="jumpdetail(item.name,list)"
+                    >
                     <div>
                         <p class="item_title">{{item.name}}</p>
                         <div class="icon_item"> <van-icon name="arrow" slot="right"  class="set_color" /></div>
                          <van-list>
                              <p class="k_p"
-                                 v-for="item1 in item.children"
-                                 :key="item1.id">  
+                                 v-for="(item1,index) in item.children"
+                                 :key="index">  
                                 <span>{{item1.name}}&nbsp;&nbsp;&nbsp;</span> 
                             </p>
                             
@@ -31,22 +33,33 @@ export default {
         };
     },
     methods: {
-    },
-  computed:{
-      ...mapState('knowledge',['knowledges']),
-     list(){
-         /* eslint-disable */
-         for(let x in this.knowledges){
-            this.listAll.push(this.knowledges[x]);
+        /* eslint-disable */
+        jumpdetail(value,list){
+            //console.log(list)
+            this.$router.push({
+                path:'/detail',
+                query:{
+                    name:value,
+                    list:list
+                }
+            })
         }
-          // 加载状态结束
-         console.log(this.knowledges+"0000000000000000")
-         return this.listAll
-     },
-  },
-  created(){
-      this.$store.dispatch('knowledge/getKnowledge')
-  }
+    },
+     computed:{
+        ...mapState('knowledge',['knowledges']),
+        list(){
+            /* eslint-disable */
+            for(let x in this.knowledges){
+                this.listAll.push(this.knowledges[x]);
+            }
+            // 加载状态结束
+           // console.log(this.knowledges+"0000000000000000")
+            return this.listAll
+        },
+    },
+    created(){
+        this.$store.dispatch('knowledge/getKnowledge')
+    }
 }
 </script>
 <style scoped>

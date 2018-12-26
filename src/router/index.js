@@ -4,6 +4,7 @@ import Login from "../components/Login";
 import Home from "../components/Home";
 import lefthome from '../components/login/lefthome'
 import search from '../components/search/search'
+import detail from '../components/detail/detail'
 
 
 
@@ -23,6 +24,10 @@ const routes = [
     {
         path: '/search',
         component: search
+    },
+    {
+        path: '/detail',
+        component: detail
     },
     { path: '/Login', component: Login },
 

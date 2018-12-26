@@ -16,7 +16,7 @@ const mutations = {
 const actions = {
     /* eslint-disable */
     getSearch({ commit }, { page, keyword }) {
-        console.log(keyword)
+        //console.log(keyword)
         search.getSearch(search => {
             commit('setSearch', search)
         }, page, keyword)

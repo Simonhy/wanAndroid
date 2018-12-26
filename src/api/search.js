@@ -17,7 +17,7 @@ export default {
             url,
         };
         axios(options).then(res => {
-            console.log(res.data)
+            //console.log(res.data)
             cb(res.data.data)
         })
     }

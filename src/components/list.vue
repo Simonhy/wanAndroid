@@ -9,8 +9,8 @@
                 :offset="600"
                 >
                 <van-cell
-                    v-for="item in list"
-                    :key="item.id"
+                    v-for="(item,index) in list"
+                    :key="index"
                 >
                     <a :href="item.link">
                         <div class="item_title" >
@@ -21,7 +21,7 @@
                     </div>
                     <p class="item_content">{{item.title}}</p>
                     </a>
-                    <div class="item_title">
+                    <div class="item_title" @click="jumpDetail(item.chapterName,list)">
                         <p class="item_chapter">{{item.chapterName}}</p>
                         <van-icon name="like-o" slot="right"/>  
                     </div>
@@ -65,13 +65,36 @@ export default {
     //     this.refresh = true
     //     this.isLoading = false;
     // }
+    jumpDetail(value,list){
+        let lists = []
+        for(let i=0;i<list.length;i++){
+            lists.push({
+                name:list[i].chapterName,
+                children:[
+                    {
+                        name:list[i].chapterName,
+                        id:list[i].chapterId
+                    }
+                ]
+            })
+        }
+        this.$router.push({
+            path:'/detail',
+            query:{
+                name:value,
+                list:lists
+            }
+        })
+    }
   },
   computed:{
       ...mapState('home',['listData']),
      list(){
           // 加载状态结束
         this.loading = false;
-     
+          /* eslint-disable */
+            //this.loading_d = false;
+           // console.log('被点击了一次')
         if(this.pageNumber ==  this.listData.pageCount){
              this.finished = true;
         }else{

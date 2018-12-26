@@ -37,13 +37,13 @@ export default {
 </script>
 <style scoped>
 .title{
-    background: dodgerblue;
+    background: #f2f2f2;
 }
 .hot{
     margin-right: 20px;
 }
 .set_color{
-    color: white;
+    /* color: white; */
 }
 </style>
 

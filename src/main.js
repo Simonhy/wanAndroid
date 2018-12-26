@@ -14,7 +14,6 @@ Vue.config.productionTip = false
 // 通过use方法加载axios插件
 Vue.use(VueAxios, axios)
 Vue.use(Vant);
-
 new Vue({
     router,
     store,

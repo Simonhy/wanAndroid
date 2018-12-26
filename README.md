@@ -5,3 +5,9 @@ wanAndroid vue 版本 单页面应用，未完，持续开发中
 # 项目搭建
 
 使用 Vue-cli3.0+Vue+Vuex+Vant(移动UI框架)+vue-router，基础功能搭建
+# web端直接用浏览器查看
+> 安装node或者使用yarn
+## git项目到本地
+### npm install
+### npm run serve
+### 使用localhost：8080进行查看。

@@ -12,4 +12,4 @@ wanAndroid vue 版本 单页面应用，未完，持续开发中
 ### npm run serve
 ### 使用localhost：8080进行查看。
 
-## vue.config.js 文件用于配置本地的代理请求网络。
+### vue.config.js 文件用于配置本地的代理请求网络。
